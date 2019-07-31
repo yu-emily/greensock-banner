@@ -1,0 +1,103 @@
+<!--
+================================
+Coder: Emily Yu 
+Date: 02/16/2019 - 02/18/2019
+Related File: banner.css, animation.js
+
+Description: 
+Objective for this exercise is to learn
+how to implement GreenSock Animation Platform (GSAP).
+
+Requirements include:
+-use CSS to make a banner with an area about 
+920px in width and 100px in height and 
+add a background color
+-have at least one animation where 
+text is added onto the banner area 
+-have at least one animation where 
+an appropriate image is animated 
+after the text is done animating
+
+Modification I did with requirements:
+-changed the banner area with a height of 200px
+to have more playing ground
+
+ANIMATION TIMELINE:
+1) Background image of books will first blur before focusing
+2) Two circles with text will drop onto the banner 
+one after the other
+3) Background changes with area covered in yellow
+4) Main title appears
+5) Lines flash around the title area (repeated twice) and 
+moves down to form another text area with a background color of black
+6) Subtitle shows up
+7) Taglines for the banner appear in the black area
+8) The last tagline bumps up into the black area
+9) A bee flies in and flaps its wings (repeated indefinitely)
+
+Notes and future implementations:
+1) For the line sequences that repeat, I tried using 
+yoyo and repeat properties/methods. Did not work as how I expected.
+I suspect because the two sequences do not act entirely the same. Need to further investigate. 
+2) For the lines, since they go from one state to another, I tried using fromTo() instead,
+but the lines came out with a glitch effect and was not what I wanted. 
+Maybe it's because the CSS is different for the from state or 
+because the from and to states have different durations.
+3) For tweens that immediately animate after the previous one, 
+implementing a TimelineMax instead of TweenLite might be worthwhile,
+therefore a future version of this should have a TimelineMax().
+====================================
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Exercise #7: Green Sock Animation</title>
+    <link rel="stylesheet" href="banner.css">
+    <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Josefin+Sans" rel="stylesheet">
+</head>
+<body>
+    
+<a href="#">
+    <div id="banner">
+        <div class="circle" id="circleOne"></div>
+        <div class="text" id="lineOne">Do you ever wonder<br>if machines dream<br>of electric sheep?</div>
+        <div class="circle" id="circleTwo"></div>
+        <div class="text" id="lineTwo">What happens<br>when a lion &amp; a witch<br>meet in a forest?</div>
+        <!--Found image on Unsplash. Photo by Patrick Tomasso-->
+        <!-- created image effect through this website: https://yoksel.github.io/svg-gradient-map/#/> -->
+        <div id="books"><img src="../img/books.jpg" alt=""></div>
+        <div id="background"></div>
+        <div id="logo">
+        <!--Bee SVG created by me through Visio -->
+            <div id="bee">
+                <img id="noWings" src="../img/bee_with_no_wings.svg" alt="">
+                <img id="leftWing" src="../img/left_wing.svg" alt="">
+                <img id="rightWing" src="../img/right_wing.svg" alt="">
+            </div>
+            <div id="name">BeeWitched<span id="subname">: A Literary Series</span></div>
+            <!--HTML for the lines around the div area -->
+            <div id="left"></div>
+            <div id="bottom"></div>
+            <div id="right"></div>
+            <div id="top"></div>
+        </div>
+        <div id="wrapper">
+            <p class="tagline" id="tagOne">Come join us as we talk about fantastical writings.</p>
+            <p class="tagline" id="tagTwo">Explore topics ranging from the history of fantasy, gothic &amp; horror fiction, and magical realism.</p>
+            <p class="tagline" id="tagThree">Learn more about the 21-week program at Black+Yellow Writing House.</p>
+        </div>
+    </div>
+</a>
+
+
+<script src="TweenLite.min.js"></script>
+<script src="CSSPlugin.min.js"></script>
+<script src="EasePack.min.js"></script>
+<script src="TweenMax.min.js"></script>
+<script src="TimelineMax.min.js"></script>
+<script src="animation.js"></script>
+
+</body>
+</html>
